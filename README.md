@@ -5,7 +5,7 @@
 - 🛡 **Injection Guard** — screens *untrusted input* (user messages, fetched web pages, documents, tool results) for prompt-injection, jailbreaks, command injection, secret-exfiltration attempts, and hidden/zero-width payloads **before** they reach your LLM.
 - ✅ **Output QC** — screens your agent's *output* before it reaches a user or another tool: empty/truncated replies, accidental refusals, leaked secrets or system-prompt, invalid JSON when JSON was required, and low-effort "slop".
 
-Built for operators running OpenClaw / Hermes / Claude / Custom-GPT agents who need a trust layer they can drop in today.
+Built for operators running AI agents (Claude, GPT, and custom) who need a trust layer they can drop in today.
 
 ---
 
