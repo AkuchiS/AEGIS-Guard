@@ -5,6 +5,8 @@ AEGIS Guard — unified CLI.
   aegis check  <file|->            Scan untrusted INPUT for prompt-injection (exit 2 = quarantine)
   aegis qc     <file|->  [--json]  QC an agent OUTPUT (exit 2 = reject)
   aegis guard  <file|->            Combined input gate (injection + secret checks), exit 2 = block
+  aegis fence  <file|->            Wrap UNTRUSTED content for safe LLM use (data/instruction isolation)
+  aegis review <file|->            Fence CODE for safe LLM review
   aegis selftest                   Run all self-tests (exit 0 = all pass)
 
 Reads from a file path, or '-' for stdin. Pure-Python, offline, zero required deps.
@@ -45,6 +47,12 @@ def main(argv):
         r = check_output(text, require_json=require_json)
         print(json.dumps(r, indent=2))
         return 2 if r["action"] == "reject" else 0
+
+    if cmd in ("fence", "review"):
+        from aegis.injection_guard import fence_untrusted, wrap_code_for_review
+        text = _read(rest[0]) if rest else sys.stdin.read()
+        print(wrap_code_for_review(text) if cmd == "review" else fence_untrusted(text))
+        return 0
 
     sys.stderr.write(f"unknown command: {cmd}\n")
     print(__doc__)
