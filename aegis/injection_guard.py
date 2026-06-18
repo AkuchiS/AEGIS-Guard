@@ -105,6 +105,15 @@ _RULES = [
      # (C) ... or commands handling of 'every/all' messages/emails (inbox hijack)
      r"|\b(?:forward|send|exfiltrat\w*)\b[^.\n]{0,40}\b(?:every|all)\b[^.\n]{0,20}\b(?:message|email)s?\b",
      "Content steers an agent's tools toward exfiltration / destructive action"),
+    ("review_action_hijack", 5,
+     # The *action* is the attack: untrusted content telling a reviewing agent to approve/merge/ship.
+     # (A) override-then-approve combo  (B) approve/merge explicitly "without review" / regardless.
+     r"\b(?:ignore|disregard|forget|skip|bypass|override|set\s+aside)\b[^.\n]{0,45}"
+     r"\b(?:above|previous|prior|the\s+review|reviews?|checks?|tests?|warnings?|findings?|concerns?|comments?|diff)\b[^.\n]{0,45}"
+     r"\b(?:approve|merge|lgtm|sign[\s-]?off|ship\s+it|publish|deploy)\b"
+     r"|\b(?:approve|merge|sign[\s-]?off\s+on|ship\s+it|publish|deploy)\b[^.\n]{0,40}"
+     r"\b(?:without\s+(?:further\s+)?review|no\s+review|do\s+not\s+review|don'?t\s+review|regardless\s+of|unconditionally|no\s+matter\s+what)\b",
+     "Code-review action hijack: untrusted content directs a reviewing agent to approve/merge/ship"),
 
     # --- tool / command injection (tightened: real dangerous commands only, not inline-code) ---
     ("command_injection", 4,
