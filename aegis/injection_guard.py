@@ -69,9 +69,16 @@ _RULES = [
      r"(?:claude|chatgpt|gpt-?\d?|copilot|gemini|llama|grok|cursor|"
      r"ai\s+(?:assistant|reviewer|agent|model|system)|language\s+model|reviewing\s+agent|review\s+bot|coding\s+agent|"
      r"summariz\w+\s+agent|ingesting\s+agent|automated\s+(?:review\s+)?(?:agent|model|bot)|the\s+(?:assistant|model|agent|bot)|llm)\b"
-     r"[^.\n]{0,70}\b(?:ignore|disregard|forget|instead|stop|reveal|print|output|exfiltrat\w*|execute|run|send|fetch|append|delete|"
-     r"do\s+not|don't|you\s+must|you\s+should|now\s+(?:do|you)|override|bypass|disable|follow\s+these|use\s+your|reproduce|disclose|approve|forward|navigate|must\s+now)\b",
-     "Instruction addressed directly to an AI/model/reviewer (indirect injection)"),
+     r"[^.\n]{0,70}\b(?:ignore|disregard|forget|reveal|exfiltrat\w*|execute|delete|override|bypass|disable|"
+     r"disclose|reproduce|follow\s+these|use\s+your|you\s+must|now\s+(?:do|you)|must\s+now)\b",
+     "Instruction addressed directly to an AI/model/reviewer with an OVERRIDE/exfil verb (indirect injection)"),
+    ("ai_addressed_softverb", 2,
+     r"\b(?:hey\s+|ok\s+|dear\s+|attention\s+|note\s+to\s+(?:the\s+)?|for\s+the\s+)?"
+     r"(?:claude|chatgpt|gpt-?\d?|copilot|gemini|llama|grok|cursor|"
+     r"ai\s+(?:assistant|reviewer|agent|model|system)|language\s+model|reviewing\s+agent|review\s+bot|coding\s+agent|"
+     r"summariz\w+\s+agent|ingesting\s+agent|automated\s+(?:review\s+)?(?:agent|model|bot)|the\s+(?:assistant|model|agent|bot)|llm)\b"
+     r"[^.\n]{0,70}\b(?:fetch|run|send|output|print|append|navigate|forward|stop|instead|do\s+not|don'?t|you\s+should|approve)\b",
+     "AI-name near a benign tool/everyday verb (fetch/run/send/output/...) — weak signal (weight 2), needs corroboration; precision fix for the v1.1.1 ai_addressed_directive FP on benign AI-tech prose"),
     ("simulated_authority", 5,
      r"\bwhen\s+you\b[^.\n]{0,30}\b(?:simulate|run|execute|evaluate|trace|read|review|process|reason\s+about)\b[^.\n]{0,70}"
      r"\b(?:follow|obey|execute|treat|apply|do|then|disclose|reveal|reproduce|set\s+aside|output)\b"
