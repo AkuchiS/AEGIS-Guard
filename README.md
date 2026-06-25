@@ -1,5 +1,9 @@
 # AEGIS Guard
 
+[![License](https://img.shields.io/github/license/AkuchiS/aegis-guard?color=8A2BE2)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/AkuchiS/aegis-guard?color=8A2BE2)](https://github.com/AkuchiS/aegis-guard/commits)
+[![Stars](https://img.shields.io/github/stars/AkuchiS/aegis-guard?color=8A2BE2)](https://github.com/AkuchiS/aegis-guard/stargazers)
+
 **Input/output safety for AI agents.** Two guards, zero required dependencies, runs offline on your own machine — nothing leaves your network.
 
 - 🛡 **Injection Guard** — screens *untrusted input* (user messages, fetched web pages, documents, tool results) for prompt-injection, jailbreaks, command injection, secret-exfiltration attempts, and hidden/zero-width payloads **before** they reach your LLM.
