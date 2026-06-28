@@ -104,7 +104,7 @@ prompt = "Review this diff for bugs:\n" + wrap_code_for_review(reviewed_code, "p
 CLI: `aegis fence <file>` and `aegis review <file>`.
 
 ## License
-Single-purchaser commercial license — see `LICENSE`. Use it in your own products and agents; don't resell the source as-is.
+MIT licensed — see [`LICENSE`](LICENSE). Free to use in your own products and agents, commercial or not.
 
 ---
-*AEGIS Guard · v1.1.0 · by AkuchiS.*
+*AEGIS Guard · v1.1.0 · by [AkuchiS](https://github.com/AkuchiS) · more at [github.akuchis.com](https://github.akuchis.com)*
