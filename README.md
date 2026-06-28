@@ -107,4 +107,4 @@ CLI: `aegis fence <file>` and `aegis review <file>`.
 MIT licensed — see [`LICENSE`](LICENSE). Free to use in your own products and agents, commercial or not.
 
 ---
-*AEGIS Guard · v1.1.0 · by [AkuchiS](https://github.com/AkuchiS) · more at [github.akuchis.com](https://github.akuchis.com)*
+*AEGIS Guard · v1.1.2 · by [AkuchiS](https://github.com/AkuchiS) · more at [github.akuchis.com](https://github.akuchis.com)*
